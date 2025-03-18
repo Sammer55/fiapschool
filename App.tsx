@@ -1,12 +1,12 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
-import Test from './src/screens/Test';
 import { theme } from './src/theme';
+import RootNavigation from './src/routes';
 
 function App(): React.JSX.Element {
   return (
     <ThemeProvider theme={theme}>
-      <Test />
+      <RootNavigation />
     </ThemeProvider>
   );
 }

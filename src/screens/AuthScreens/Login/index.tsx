@@ -1,12 +1,11 @@
 import { Container, Text } from './styles';
 
-const Test = () => {
+const LoginScreen = () => {
   return (
     <Container>
-      <Text>Teste</Text>
-      <Text>Teste</Text>
+      <Text>Login Screen</Text>
     </Container>
   );
 };
 
-export default Test;
+export default LoginScreen;
