@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { TabBarLabel } from './styles';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ClassesScreen from '../../screens/AuthenticatedScreens/Classes';
@@ -16,38 +15,33 @@ interface TabBarProps {
 
 const Tab = createBottomTabNavigator();
 
+const TabBarLabelComponent = ({ children, focused }: TabBarProps) => (
+  <TabBarLabel isFocused={focused}>{children}</TabBarLabel>
+);
+
+const Calendar = ({ focused }: TabBarProps) => {
+  const theme = useTheme();
+  return (
+    <CalendarIcon color={focused ? theme.colors.primary : theme.colors.text} />
+  );
+};
+
+const ReportCard = ({ focused }: TabBarProps) => {
+  const theme = useTheme();
+  return (
+    <ReportCardIcon
+      color={focused ? theme.colors.primary : theme.colors.text}
+    />
+  );
+};
+
 const AuthenticatedTabs = () => {
   const theme = useTheme();
-
-  const TabBarLabelComponent = useCallback(
-    ({ children, focused }: TabBarProps) => (
-      <TabBarLabel isFocused={focused}>{children}</TabBarLabel>
-    ),
-    [],
-  );
-
-  const Calendar = useCallback(
-    ({ focused }: TabBarProps) => (
-      <CalendarIcon
-        color={focused ? theme.colors.primary : theme.colors.text}
-      />
-    ),
-    [theme],
-  );
-
-  const ReportCard = useCallback(
-    ({ focused }: TabBarProps) => (
-      <ReportCardIcon
-        color={focused ? theme.colors.primary : theme.colors.text}
-      />
-    ),
-    [theme],
-  );
 
   return (
     <Tab.Navigator
       screenOptions={{
-        header: Header,
+        header: () => <Header />,
         tabBarStyle: {
           backgroundColor: theme.colors.foreground,
           borderTopWidth: 0,
@@ -66,6 +60,7 @@ const AuthenticatedTabs = () => {
         name="Classes"
         component={ClassesScreen}
       />
+
       <Tab.Screen
         options={{
           title: 'Boletim',

@@ -12,6 +12,8 @@ import Button from '../../../components/Button';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import { responsaveis } from '../../../db/responsaveis';
 import { storage } from '../../../../App';
+import { useStudent } from '../../../context/studentContext';
+import { UserProps } from '../../../types/user';
 
 const LoginScreen = () => {
   const [document, setDocument] = useState<string>('');
@@ -20,6 +22,7 @@ const LoginScreen = () => {
   const [isError, setIsError] = useState<boolean>(false);
 
   const navigation = useNavigation();
+  const { setSelectedStudent } = useStudent();
 
   const isValid = document !== '' && password !== '';
 
@@ -48,6 +51,13 @@ const LoginScreen = () => {
       );
 
       storage.set('userLogged', JSON.stringify(user));
+
+      const firstStudent = responsaveis.find(item => item.id === user.id)
+        ?.alunos[0];
+
+      if (firstStudent) {
+        setSelectedStudent(firstStudent as UserProps['alunos'][0]);
+      }
 
       return setIsLoading(false);
     }

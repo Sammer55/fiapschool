@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Content, StyledFlatList, Title } from './styles';
 import EmptyState from '../../../components/EmptyState';
 import Select from '../../../components/Select';
@@ -49,6 +49,10 @@ const ClassesScreen = () => {
   const classes = selectedStudent?.agenda.find(
     item => item.dia === selectedDate?.value,
   );
+
+  useEffect(() => {
+    setSelectedDate(undefined);
+  }, [selectedStudent]);
 
   return (
     <Container>

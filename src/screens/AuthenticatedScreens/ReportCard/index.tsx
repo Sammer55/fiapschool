@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from '../../../components/Select';
 import { useStudent } from '../../../context/studentContext';
 import { Container, Content, StyledFlatList, Title } from './styles';
@@ -30,6 +30,10 @@ const ReportCardScreen = () => {
   const renderItem: ListRenderItem<QuarterProps> = ({ item }) => (
     <Quarter item={item} />
   );
+
+  useEffect(() => {
+    setSelectedReportCard(undefined);
+  }, [selectedStudent]);
 
   return (
     <Container>

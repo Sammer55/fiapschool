@@ -15,7 +15,7 @@ interface AccordionProps {
 }
 
 const formatGrade = (grade: number) =>
-  grade.toFixed(1).replace('.0', ',0').replace('.', ',');
+  grade && grade.toFixed(1).replace('.0', ',0').replace('.', ',');
 
 const Accordion = ({ discipline }: AccordionProps) => {
   const [isInformationsVisible, setIsInformationsVisible] = useState(false);

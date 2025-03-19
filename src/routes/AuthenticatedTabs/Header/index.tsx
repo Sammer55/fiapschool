@@ -16,9 +16,11 @@ import { CommonActions, useNavigation } from '@react-navigation/native';
 import { storage } from '../../../../App';
 import { UserProps } from '../../../types/user';
 import { useStudent } from '../../../context/studentContext';
+import { memo } from 'react';
 
 const Header = () => {
   const navigation = useNavigation();
+
   const { selectedStudent, setIsStudentSwitchVisible, setSelectedStudent } =
     useStudent();
 
@@ -81,4 +83,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

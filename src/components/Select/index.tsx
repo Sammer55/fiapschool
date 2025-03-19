@@ -34,6 +34,7 @@ const Select = ({ options = [], onSelect, selected }: SelectProps) => {
 
   const handleSelect = (selectedOption: OptionProps) => {
     onSelect(selectedOption);
+    toggleRotation();
     setIsSelectAreaVisible(false);
   };
 
@@ -53,7 +54,7 @@ const Select = ({ options = [], onSelect, selected }: SelectProps) => {
             <TouchableOpacity
               onPress={() => handleSelect(item)}
               key={item.label}
-              hitSlop={4}>
+              hitSlop={6}>
               <Text>{item.label}</Text>
             </TouchableOpacity>
           ))}
