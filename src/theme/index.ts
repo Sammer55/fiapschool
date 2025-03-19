@@ -5,8 +5,9 @@ export const theme = {
     text: '#FFFFFF',
     subtitle: '#777777',
     foreground: '#262626',
-    foreground_light: '#4D4D4D',
+    foregroundLight: '#4D4D4D',
     border: '#CCCCCC',
+    borderDark: '#525252',
     background: '#000000',
   },
   fontFamily: {
