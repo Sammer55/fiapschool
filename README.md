@@ -1,97 +1,83 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<img src="https://github.com/user-attachments/assets/c542058b-7451-434d-af57-911f61a92ad8" width="120"/>
 
-# Getting Started
+# FIAP School App
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+Este é um aplicativo desenvolvido em React Native CLI como um teste para a FIAP.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Como executar o projeto
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Pré-requisitos
 
-```sh
-# Using npm
-npm start
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
 
-# OR using Yarn
-yarn start
-```
+- **Node.js** (versão 18 ou superior)
+- **npm** ou **yarn**
+- **React Native CLI** (instalado globalmente)
+- **Android Studio**
+- **Xcode**
 
-## Step 2: Build and run your app
+Instalação:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- Rode **yarn install** ou **npm install** pra instalar as dependências.
+*Rode **npx pod-install** para instalar as dependências do ios.*
 
-### Android
+- Execute o comando **yarn ios** ou **yarn android**
 
-```sh
-# Using npm
-npm run android
+---
 
-# OR using Yarn
-yarn android
-```
+## Bibliotecas utilizadas
 
-### iOS
+Lista das principais bibliotecas utilizadas no projeto e suas funcionalidades:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### Dependências principais
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+1. **React Native Bootsplash** (`react-native-bootsplash`):
+   - Exibe uma tela de splash personalizada durante o boot do app.
 
-```sh
-bundle install
-```
+2. **React Native Masked Text** (`react-native-masked-text`):
+   - Adiciona máscaras a campos de texto, como CPF, telefone, etc.
 
-Then, and every time you update your native dependencies, run:
+3. **React Native MMKV** (`react-native-mmkv`):
+   - Armazenamento local rápido e eficiente para dados persistentes, muito mais rápido que AsyncStorage.
 
-```sh
-bundle exec pod install
-```
+4. **React Native SVG** (`react-native-svg`):
+   - Renderização de SVG no React Native.
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+--- 
 
-```sh
-# Using npm
-npm run ios
+## App Icon e App name
 
-# OR using Yarn
-yarn ios
-```
+<img src="https://github.com/user-attachments/assets/b7e541ba-40c2-4bf3-acfc-2cf6cc619f44" width="120"/>
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Splash Screen + Sessão do usuário logado
+https://github.com/user-attachments/assets/ef35ab70-0aff-43bf-8eb2-55730c6aca45
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## Login
 
-## Step 3: Modify your app
+<img src="https://github.com/user-attachments/assets/984432e5-e8cd-4dbf-8513-223c61fc455b" width="260"/>
+<img src="https://github.com/user-attachments/assets/e8744420-4095-48de-b123-6084df1d6bde" width="260"/>
+<img src="https://github.com/user-attachments/assets/23efd125-b4bb-4ade-b19c-586564f41d01" width="260"/>
 
-Now that you have successfully run the app, let's make changes!
+## Agenda
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+<img src="https://github.com/user-attachments/assets/aa2746c3-3d81-40a9-9ca5-2fe944345890" width="260"/>
+<img src="https://github.com/user-attachments/assets/ab27f7c5-1993-4807-8d8e-e6b2d4859686" width="260"/>
+<img src="https://github.com/user-attachments/assets/a2a6d624-3050-477e-80d9-9fc17691266e" width="260"/>
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Trocar perfil
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+<img src="https://github.com/user-attachments/assets/01600e4a-a29b-4f35-ac54-991886ea9349" width="260"/>
+<img src="https://github.com/user-attachments/assets/119549d6-6400-4fc0-8789-86f23be13ffa" width="260"/>
 
-## Congratulations! :tada:
+## Boletim
 
-You've successfully run and modified your React Native App. :partying_face:
+<img src="https://github.com/user-attachments/assets/3f80f720-9c56-42eb-b14c-d5ad6503f7d6" width="260"/>
+<img src="https://github.com/user-attachments/assets/6c5bc9bb-2829-42f3-b5e4-9e1699f7a4e8" width="260"/>
+<img src="https://github.com/user-attachments/assets/d1e55e28-90cd-4442-a4b9-27e7ac6b86bd" width="260"/>
+<img src="https://github.com/user-attachments/assets/a3373ada-95eb-4f87-b73e-93ac5c54dca8" width="260"/>
+<img src="https://github.com/user-attachments/assets/d27bb8b6-a0b7-4e5f-a5c2-a48d12395ffb" width="260"/>
 
-### Now what?
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
 
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
