@@ -44,7 +44,7 @@ export const StudentProvider = ({ children }: DateProviderProps) => {
             ?.alunos[0];
 
           if (firstStudent) {
-            setSelectedStudent(firstStudent);
+            setSelectedStudent(firstStudent as UserProps['alunos'][0]);
           }
         } catch (error) {
           console.error('Erro ao fazer parse do userLogged', error);

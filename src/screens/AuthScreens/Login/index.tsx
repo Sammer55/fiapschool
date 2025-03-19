@@ -31,7 +31,7 @@ const LoginScreen = () => {
     setIsLoading(true);
     setIsError(false);
 
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise<void>(resolve => setTimeout(() => resolve(), 2000));
 
     const unmaskedDocument = document.replaceAll('.', '').replaceAll('-', '');
 

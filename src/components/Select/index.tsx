@@ -16,6 +16,7 @@ const Select = ({ options = [], onSelect, selected }: SelectProps) => {
 
   const toggleRotation = () => {
     Animated.timing(rotation, {
+      // @ts-ignore
       toValue: rotation._value === 0 ? 1 : 0,
       duration: 300,
       useNativeDriver: true,
