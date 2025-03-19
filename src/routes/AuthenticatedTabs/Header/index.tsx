@@ -15,9 +15,11 @@ import LogoutIcon from '../../../components/icons/Logout';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import { storage } from '../../../../App';
 import { UserProps } from '../../../types/user';
+import { useStudent } from '../../../context/studentContext';
 
 const Header = () => {
   const navigation = useNavigation();
+  const { selectedStudent, setIsStudentSwitchVisible } = useStudent();
 
   const user: UserProps = JSON.parse(storage.getString('userLogged') || '');
 
@@ -42,7 +44,7 @@ const Header = () => {
         <Logo height={16} width={100} />
 
         <ButtonsContainer>
-          <Button>
+          <Button onPress={() => setIsStudentSwitchVisible(true)}>
             <ButtonText>Trocar Perfil</ButtonText>
           </Button>
 
@@ -60,9 +62,14 @@ const Header = () => {
         </Title>
 
         <StudentContainer>
-          <StudentName>ALUNO SELECIONADO</StudentName>
+          <StudentName>
+            {selectedStudent?.primeiroNome} {selectedStudent?.sobrenome}
+          </StudentName>
 
-          <StudentInformations>TURMA - RM 123 - PERÍODO</StudentInformations>
+          <StudentInformations>
+            {selectedStudent?.turma} - RM {selectedStudent?.rm} -{' '}
+            {selectedStudent?.periodo}
+          </StudentInformations>
         </StudentContainer>
       </UserInformation>
     </Container>

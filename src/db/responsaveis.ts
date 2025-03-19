@@ -15,7 +15,7 @@ export const responsaveis = [
         sobrenome: 'da Silva',
         agenda: [
           {
-            dia: '2025-03-16',
+            dia: '2025-03-01',
             aulas: [],
           },
           {

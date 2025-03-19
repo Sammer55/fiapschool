@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Container, Content, StyledFlatList, Title } from './styles';
 import EmptyState from '../../../components/EmptyState';
-import { responsaveis } from '../../../db/responsaveis';
-import { storage } from '../../../../App';
 import Select from '../../../components/Select';
 import { OptionProps } from '../../../types/option';
 import Class from './Class';
 import { ListRenderItem } from 'react-native';
+import { useStudent } from '../../../context/studentContext';
 
 export interface ClassProps {
   horario: string;
@@ -16,13 +15,19 @@ export interface ClassProps {
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
 
-  const diaSemana = new Intl.DateTimeFormat('pt-BR', {
+  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+
+  const weekday = new Intl.DateTimeFormat('pt-BR', {
     weekday: 'long',
   }).format(date);
-  const dia = new Intl.DateTimeFormat('pt-BR', { day: '2-digit' }).format(date);
-  const mes = new Intl.DateTimeFormat('pt-BR', { month: 'long' }).format(date);
 
-  return `${dia} de ${mes}, ${diaSemana}`;
+  const day = new Intl.DateTimeFormat('pt-BR', { day: '2-digit' }).format(date);
+
+  const month = new Intl.DateTimeFormat('pt-BR', { month: 'long' }).format(
+    date,
+  );
+
+  return `${day} de ${month}, ${weekday}`;
 };
 
 const ClassesScreen = () => {
@@ -30,20 +35,18 @@ const ClassesScreen = () => {
     OptionProps | null | undefined
   >();
 
+  const { selectedStudent } = useStudent();
+
   const renderItem: ListRenderItem<ClassProps> = ({ item }) => (
     <Class classOption={item} />
   );
 
-  const user: (typeof responsaveis)[0] = JSON.parse(
-    storage.getString('userLogged') || '',
-  );
-
-  const dates = user?.alunos[0].agenda.map(item => ({
+  const dates = selectedStudent?.agenda.map(item => ({
     label: formatDate(item.dia),
     value: item.dia,
   }));
 
-  const classes = user?.alunos[0].agenda.find(
+  const classes = selectedStudent?.agenda.find(
     item => item.dia === selectedDate?.value,
   );
 
@@ -53,7 +56,7 @@ const ClassesScreen = () => {
         <Title>Agenda</Title>
 
         <Select
-          options={dates}
+          options={dates || []}
           onSelect={setSelectedDate}
           selected={selectedDate}
         />
