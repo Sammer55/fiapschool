@@ -1,8 +1,13 @@
-import { Image } from './styles';
+import { Image } from 'react-native';
 import logo from '../../../assets/images/logo.png';
 
-const Logo = () => {
-  return <Image source={logo} />;
+interface LogoProps {
+  height?: number;
+  width?: number;
+}
+
+const Logo = ({ height, width }: LogoProps) => {
+  return <Image source={logo} style={{ width, height }} />;
 };
 
 export default Logo;

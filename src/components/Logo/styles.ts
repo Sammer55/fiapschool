@@ -1,5 +1,3 @@
 import styled from 'styled-components/native';
 
-export const Image = styled.Image`
-  height: 49px;
-`;
+export const Image = styled.Image``;

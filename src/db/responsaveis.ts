@@ -1310,4 +1310,4 @@ export const responsaveis = [
       },
     ],
   },
-];
+] as const;

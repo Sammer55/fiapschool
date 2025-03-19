@@ -11,7 +11,7 @@ import {
 import Button from '../../../components/Button';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import { responsaveis } from '../../../db/responsaveis';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { storage } from '../../../../App';
 
 const LoginScreen = () => {
   const [document, setDocument] = useState<string>('');
@@ -31,11 +31,11 @@ const LoginScreen = () => {
 
     const unmaskedDocument = document.replaceAll('.', '').replaceAll('-', '');
 
-    const isLoginSuccess = responsaveis.some(
+    const user = responsaveis.find(
       item => item.cpf === unmaskedDocument && item.senha === password,
     );
 
-    if (isLoginSuccess) {
+    if (user) {
       navigation.dispatch(
         CommonActions.reset({
           index: 0,
@@ -47,7 +47,7 @@ const LoginScreen = () => {
         }),
       );
 
-      AsyncStorage.setItem('isLogged', 'true');
+      storage.set('userLogged', JSON.stringify(user));
 
       return setIsLoading(false);
     }
@@ -60,7 +60,7 @@ const LoginScreen = () => {
     <SafeAreaView>
       <Container>
         <LogoContainer>
-          <Logo />
+          <Logo width={306} height={49} />
         </LogoContainer>
 
         <Form>
