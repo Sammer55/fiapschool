@@ -6,7 +6,11 @@
 
     <style name="BootTheme" parent="Theme.BootSplash">
         <item name="windowSplashScreenBackground">@color/bootsplash_background</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/bootsplash_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
         <item name="postSplashScreenTheme">@style/AppTheme</item>
+
+        <item name="bootSplashBackground">@color/bootsplash_background</item>
+        <item name="bootSplashLogo">@drawable/ic_launcher</item>
+        <item name="postBootSplashTheme">@style/AppTheme</item>
     </style>
 </resources>

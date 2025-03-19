@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../../../components/Input';
 import Logo from '../../../components/Logo';
 import {
   Container,
   ErrorMessage,
   Form,
+  KeyboardAvoidingView,
   LogoContainer,
   SafeAreaView,
 } from './styles';
@@ -56,6 +57,8 @@ const LoginScreen = () => {
         ?.alunos[0];
 
       if (firstStudent) {
+        console.log('firstStudent', firstStudent);
+
         setSelectedStudent(firstStudent as UserProps['alunos'][0]);
       }
 
@@ -68,39 +71,41 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView>
-      <Container>
-        <LogoContainer>
-          <Logo width={306} height={49} />
-        </LogoContainer>
+      <KeyboardAvoidingView>
+        <Container>
+          <LogoContainer>
+            <Logo width={306} height={49} />
+          </LogoContainer>
 
-        <Form>
-          <Input
-            maskType="cpf"
-            onChangeText={setDocument}
-            value={document}
-            placeholder="CPF"
-            keyboardType="number-pad"
-          />
-          <Input
-            onChangeText={setPassword}
-            value={password}
-            placeholder="Senha"
-            secureTextEntry
-          />
+          <Form>
+            <Input
+              maskType="cpf"
+              onChangeText={setDocument}
+              value={document}
+              placeholder="CPF"
+              keyboardType="number-pad"
+            />
+            <Input
+              onChangeText={setPassword}
+              value={password}
+              placeholder="Senha"
+              secureTextEntry
+            />
 
-          {isError && (
-            <ErrorMessage>
-              Usuário ou senha inválida.
-              {'\n'}
-              Pode tentar novamente?
-            </ErrorMessage>
-          )}
-        </Form>
-      </Container>
+            {isError && (
+              <ErrorMessage>
+                Usuário ou senha inválida.
+                {'\n'}
+                Pode tentar novamente?
+              </ErrorMessage>
+            )}
+          </Form>
+        </Container>
 
-      <Button isLoading={isLoading} onPress={handleLogin} disabled={!isValid}>
-        Fazer Login
-      </Button>
+        <Button isLoading={isLoading} onPress={handleLogin} disabled={!isValid}>
+          Fazer Login
+        </Button>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

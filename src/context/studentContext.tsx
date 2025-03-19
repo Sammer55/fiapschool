@@ -5,9 +5,12 @@ import React, {
   ReactNode,
   Dispatch,
   SetStateAction,
+  useEffect,
 } from 'react';
 import { UserProps } from '../types/user';
 import StudentSwitch from '../components/StudentSwitch';
+import { storage } from '../../App';
+import { responsaveis } from '../db/responsaveis';
 
 type Student = UserProps['alunos'][0];
 
@@ -28,6 +31,29 @@ export const StudentProvider = ({ children }: DateProviderProps) => {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [isStudentSwitchVisible, setIsStudentSwitchVisible] =
     useState<boolean>(false);
+
+  useEffect(() => {
+    const loadUserFromStorage = () => {
+      const userString = storage.getString('userLogged');
+
+      if (userString) {
+        try {
+          const user: UserProps = JSON.parse(userString);
+
+          const firstStudent = responsaveis.find(item => item.id === user.id)
+            ?.alunos[0];
+
+          if (firstStudent) {
+            setSelectedStudent(firstStudent);
+          }
+        } catch (error) {
+          console.error('Erro ao fazer parse do userLogged', error);
+        }
+      }
+    };
+
+    loadUserFromStorage();
+  }, []);
 
   return (
     <StudentContext.Provider

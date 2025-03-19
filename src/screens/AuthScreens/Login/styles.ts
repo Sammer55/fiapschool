@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 
 export const SafeAreaView = styled.SafeAreaView`
@@ -5,9 +6,18 @@ export const SafeAreaView = styled.SafeAreaView`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const Container = styled.View`
+export const KeyboardAvoidingView = styled.KeyboardAvoidingView.attrs(() => ({
+  behavior: Platform.OS === 'ios' ? 'padding' : 'padding',
+}))`
   flex: 1;
-  justify-content: center;
+`;
+
+export const Container = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    justifyContent: 'center',
+    flex: 1,
+  },
+})`
   padding: 0 54px;
 `;
 

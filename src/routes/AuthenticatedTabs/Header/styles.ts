@@ -4,12 +4,17 @@ interface TitleProps {
   isFirstName?: boolean;
 }
 
-export const Container = styled.SafeAreaView`
+interface ContentProps {
+  topInsets: number;
+}
+
+export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const Content = styled.View`
+export const Content = styled.View<ContentProps>`
   padding: 16px;
+  padding-top: ${({ topInsets }) => topInsets + 8}px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

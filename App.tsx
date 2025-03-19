@@ -4,15 +4,18 @@ import { theme } from './src/theme';
 import RootNavigation from './src/routes';
 import { MMKV } from 'react-native-mmkv';
 import { StudentProvider } from './src/context/studentContext';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export const storage = new MMKV();
 
 function App(): React.JSX.Element {
   return (
     <ThemeProvider theme={theme}>
-      <StudentProvider>
-        <RootNavigation />
-      </StudentProvider>
+      <SafeAreaProvider>
+        <StudentProvider>
+          <RootNavigation />
+        </StudentProvider>
+      </SafeAreaProvider>
     </ThemeProvider>
   );
 }

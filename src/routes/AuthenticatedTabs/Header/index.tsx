@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import {
   Button,
   ButtonsContainer,
@@ -16,10 +17,11 @@ import { CommonActions, useNavigation } from '@react-navigation/native';
 import { storage } from '../../../../App';
 import { UserProps } from '../../../types/user';
 import { useStudent } from '../../../context/studentContext';
-import { memo } from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Header = () => {
   const navigation = useNavigation();
+  const { top } = useSafeAreaInsets();
 
   const { selectedStudent, setIsStudentSwitchVisible, setSelectedStudent } =
     useStudent();
@@ -45,7 +47,7 @@ const Header = () => {
 
   return (
     <Container>
-      <Content>
+      <Content topInsets={top}>
         <Logo height={16} width={100} />
 
         <ButtonsContainer>
