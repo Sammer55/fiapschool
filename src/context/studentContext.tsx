@@ -16,7 +16,7 @@ type Student = UserProps['alunos'][0];
 
 interface StudentContextType {
   selectedStudent: Student | null;
-  setSelectedStudent: (student: Student) => void;
+  setSelectedStudent: (student: Student | null) => void;
   isStudentSwitchVisible: boolean;
   setIsStudentSwitchVisible: Dispatch<SetStateAction<boolean>>;
 }

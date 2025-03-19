@@ -19,12 +19,15 @@ import { useStudent } from '../../../context/studentContext';
 
 const Header = () => {
   const navigation = useNavigation();
-  const { selectedStudent, setIsStudentSwitchVisible } = useStudent();
+  const { selectedStudent, setIsStudentSwitchVisible, setSelectedStudent } =
+    useStudent();
 
   const user: UserProps = JSON.parse(storage.getString('userLogged') || '');
 
   const handleLogout = async () => {
     storage.clearAll();
+
+    setSelectedStudent(null);
 
     navigation.dispatch(
       CommonActions.reset({
@@ -44,9 +47,11 @@ const Header = () => {
         <Logo height={16} width={100} />
 
         <ButtonsContainer>
-          <Button onPress={() => setIsStudentSwitchVisible(true)}>
-            <ButtonText>Trocar Perfil</ButtonText>
-          </Button>
+          {user?.alunos?.length > 1 && (
+            <Button onPress={() => setIsStudentSwitchVisible(true)}>
+              <ButtonText>Trocar Perfil</ButtonText>
+            </Button>
+          )}
 
           <Button onPress={handleLogout}>
             <ButtonText>Sair</ButtonText>

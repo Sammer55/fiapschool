@@ -40,7 +40,7 @@ const Select = ({ options = [], onSelect, selected }: SelectProps) => {
   return (
     <Container>
       <Content onPress={handleOpenSelectAreaVisible}>
-        <Text>{selected ? selected.label : 'Selecionar data'}</Text>
+        <Text>{selected ? selected.label : 'Selecionar...'}</Text>
 
         <Animated.View style={{ transform: [{ rotate }] }}>
           <ChevronIcon />
